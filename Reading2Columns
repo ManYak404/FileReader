@@ -19,7 +19,6 @@ int split(string txt, int r1, int r2)
 	{
 		return -1;
 	}
-	int curChar=0;
 	string token1;
 	string token2;
 	int sum = 0;
@@ -28,17 +27,18 @@ int split(string txt, int r1, int r2)
 	{
 		while (getline(myfile, line))
 		{
+			int curChar = 0;
 			string delimiter = "	";
 			int i = 0;
 			while (i < r1)
 			{
-				curChar=line.find(delimiter,curChar);
+				curChar=line.find(delimiter,curChar)+1;
 				i++;
 			}
 			string token1 = line.substr(curChar, 1);
 			while (i < r2)
 			{
-				curChar = line.find(delimiter,curChar);
+				curChar = line.find(delimiter,curChar)+1;
 				i++;
 			}
 			string token2 = line.substr(curChar, 1);
@@ -61,8 +61,7 @@ int split(string txt, int r1, int r2)
 
 int main() 
 {
-	split("example.txt",0, 1);
-
+	cout << split("example.txt", 0, 1);
 	return 0;
 }
 
